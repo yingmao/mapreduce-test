@@ -1,20 +1,32 @@
-#!/usr/bin/python
-from operator import itemgetter
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
 import sys
 
-dict_ip_count = {}
+def main() -> int:
+    counts = {}
 
-for line in sys.stdin:
-    line = line.strip()
-    ip, num = line.split('\t')
-    try:
-        num = int(num)
-        dict_ip_count[ip] = dict_ip_count.get(ip, 0) + num
+    for line in sys.stdin:
+        line = line.strip()
+        if not line:
+            continue
 
-    except ValueError:
-        pass
+        parts = line.split("\t", 1)
+        if len(parts) != 2:
+            continue
 
+        key, num_str = parts
+        try:
+            num = int(num_str)
+        except ValueError:
+            continue
 
-sorted_dict_ip_count = sorted(dict_ip_count.items(), key=itemgetter(0))
-for ip, count in sorted_dict_ip_count:
-    print '%s\t%s' % (ip, count)
+        counts[key] = counts.get(key, 0) + num
+
+    for key in sorted(counts):
+        print(f"{key}\t{counts[key]}")
+
+    return 0
+
+if __name__ == "__main__":
+    raise SystemExit(main())
