@@ -1,13 +1,24 @@
-#!/usr/bin/python
-# --*-- coding:utf-8 --*--
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
 import re
 import sys
-if len(sys.argv) < 2:
-    print "Pattern not found"
-    sys.exit()
-pat = re.compile(sys.argv[1])
-for line in sys.stdin:
-    match = pat.search(line)
-    if match:
-        print '%s\t%s' % ("input", 1)
 
+
+def main() -> int:
+    if len(sys.argv) < 2:
+        print("Pattern not found", file=sys.stderr)
+        return 1
+
+    pat = re.compile(sys.argv[1])
+
+    for line in sys.stdin:
+        if pat.search(line):
+            # key \t value
+            print("input\t1")
+
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
