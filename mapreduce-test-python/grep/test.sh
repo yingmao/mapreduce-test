@@ -12,8 +12,6 @@ base_dir=$(cd "$(dirname "$0")"; pwd)
 
 STREAMING_JAR="/usr/local/hadoop/share/hadoop/tools/lib/hadoop-streaming-3.4.2.jar"
 
-# Option A: rely on shebang + executable bit
-# chmod +x ../../mapreduce-test-python/grep/mapper.py ../../mapreduce-test-python/grep/reducer.py
 
 /usr/local/hadoop/bin/hadoop jar "$STREAMING_JAR" \
   -file ../../mapreduce-test-python/grep/mapper.py \
