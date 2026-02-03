@@ -1,10 +1,20 @@
-#!/usr/bin/python
-# --*-- coding:utf-8 --*--
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
 import re
 import sys
 
-pat = re.compile('(?P<ip>\d+.\d+.\d+.\d+).*?"\w+ (?P<subdir>.*?) ')
-for line in sys.stdin:
-    match = pat.search(line)
-    if match:
-        print '%s\t%s' % (match.group('ip'), 1)
+# Typical access log begins with: "1.2.3.4 - - [date] "GET /path ..."
+# Capture IP; keep the rest unused.
+PAT = re.compile(r'(?P<ip>\d+\.\d+\.\d+\.\d+).*?"\w+ (?P<subdir>.*?) ')
+
+def main() -> int:
+    for line in sys.stdin:
+        m = PAT.search(line)
+        if m:
+            # Emit: ip \t 1
+            print(f"{m.group('ip')}\t1")
+    return 0
+
+if __name__ == "__main__":
+    raise SystemExit(main())
