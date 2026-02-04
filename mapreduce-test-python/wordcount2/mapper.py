@@ -1,8 +1,17 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
 import sys
-for line in sys.stdin:
-    line = line.strip()
-    words = line.split()
-    for i in range(0,len(words)-1):
-        if i > 0:
-            print "%s %s\t%s" % (words[i-1],words[i], 1)
+
+
+def main() -> int:
+    for line in sys.stdin:
+        words = line.strip().split()
+        # emit bigrams: (w0 w1), (w1 w2), ...
+        for i in range(1, len(words)):
+            print(f"{words[i-1]} {words[i]}\t1")
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
