@@ -18,17 +18,17 @@ $HDFS dfs -copyFromLocal ../../mapreduce-test-data/test.txt /wordcount3/input/
 
 # Stage 1
 $HADOOP jar "$STREAMING_JAR" \
-  -files ../../mapreduce-test-python/wordcount3/mapper1.py,../../mapreduce-test-python/wordcount3/reducer1.py \
-  -mapper ../../mapreduce-test-python/wordcount3/mapper1.py \
-  -reducer ../../mapreduce-test-python/wordcount3/reducer1.py \
+  -files ../../mapreduce-test-python/wordcount3/mapper-1.py,../../mapreduce-test-python/wordcount3/reducer-1.py \
+  -mapper ../../mapreduce-test-python/wordcount3/mapper-1.py \
+  -reducer ../../mapreduce-test-python/wordcount3/reducer-1.py \
   -input /wordcount3/input/* \
   -output /wordcount3/output/
 
 # Stage 2
 $HADOOP jar "$STREAMING_JAR" \
-  -files ../../mapreduce-test-python/wordcount3/mapper2.py,../../mapreduce-test-python/wordcount3/reducer2.py \
-  -mapper ../../mapreduce-test-python/wordcount3/mapper2.py \
-  -reducer ../../mapreduce-test-python/wordcount3/reducer2.py \
+  -files ../../mapreduce-test-python/wordcount3/mapper-2.py,../../mapreduce-test-python/wordcount3/reducer-2.py \
+  -mapper ../../mapreduce-test-python/wordcount3/mapper-2.py \
+  -reducer ../../mapreduce-test-python/wordcount3/reducer-2.py \
   -input /wordcount3/output/* \
   -output /wordcount3-2/output/
 
