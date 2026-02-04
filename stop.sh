@@ -8,7 +8,7 @@ MAPRED="$HADOOP_HOME/bin/mapred"
 "$MAPRED" --daemon stop historyserver || true
 
 # If your Hadoop build ignores this env var, it does no harm.
-export YARN_STOP_TIMEOUT=30
+export HADOOP_STOP_TIMEOUT=30
 
 # Stop YARN next
 "$HADOOP_HOME/sbin/stop-yarn.sh" || true
