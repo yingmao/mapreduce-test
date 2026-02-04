@@ -18,8 +18,9 @@ $HDFS dfs -copyFromLocal ../../mapreduce-test-data/test.txt /wordcount3/input/
 
 # Stage 1
 $HADOOP jar "$STREAMING_JAR" \
-  -files ../../mapreduce-test-python/wordcount3/mapper-1.py,../../mapreduce-test-python/wordcount3/reducer-1.py \
+  -file ../../mapreduce-test-python/wordcount3/mapper-1.py \
   -mapper ../../mapreduce-test-python/wordcount3/mapper-1.py \
+  -file ../../mapreduce-test-python/wordcount3/reducer-1.py \
   -reducer ../../mapreduce-test-python/wordcount3/reducer-1.py \
   -input /wordcount3/input/* \
   -output /wordcount3/output/
