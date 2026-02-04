@@ -27,8 +27,9 @@ $HADOOP jar "$STREAMING_JAR" \
 
 # Stage 2
 $HADOOP jar "$STREAMING_JAR" \
-  -files ../../mapreduce-test-python/wordcount3/mapper-2.py,../../mapreduce-test-python/wordcount3/reducer-2.py \
+  -file ../../mapreduce-test-python/wordcount3/mapper-2.py \
   -mapper ../../mapreduce-test-python/wordcount3/mapper-2.py \
+  -file ../../mapreduce-test-python/wordcount3/reducer-2.py \
   -reducer ../../mapreduce-test-python/wordcount3/reducer-2.py \
   -input /wordcount3/output/* \
   -output /wordcount3-2/output/
