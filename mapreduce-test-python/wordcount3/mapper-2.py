@@ -1,7 +1,23 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
 import sys
 
-for line in sys.stdin:
-    line = line.strip()
-    word, frequency = line.split('\t', 1)
-    print "%s\t%s" % (frequency, word)
+def main() -> int:
+    for line in sys.stdin:
+        line = line.strip()
+        if not line:
+            continue
+
+        parts = line.split("\t", 1)
+        if len(parts) != 2:
+            continue
+
+        word, freq = parts
+        # emit "frequency \t word"
+        print(f"{freq}\t{word}")
+
+    return 0
+
+if __name__ == "__main__":
+    raise SystemExit(main())
