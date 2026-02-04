@@ -12,10 +12,10 @@ $HDFS dfs -rm -r -f /wordcount/output/
 $HDFS dfs -mkdir -p /wordcount/input/
 $HDFS dfs -copyFromLocal ../../mapreduce-test-data/test.txt /wordcount/input/
 
-$HADOOP jar "$STREAMING_JAR" \
-  -file ../../mapreduce-test-python/wordcount/mapper.py \
+/usr/local/hadoop/bin/hadoop jar "$STREAMING_JAR" \
+  -files ../../mapreduce-test-python/wordcount/mapper.py \
+  -files ../../mapreduce-test-python/wordcount/reducer.py \
   -mapper ../../mapreduce-test-python/wordcount/mapper.py \
-  -file ../../mapreduce-test-python/wordcount/reducer.py \
   -reducer ../../mapreduce-test-python/wordcount/reducer.py \
   -input /wordcount/input/* \
   -output /wordcount/output/
